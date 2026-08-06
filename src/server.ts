@@ -1,9 +1,10 @@
 import 'dotenv/config';
 import express from "express";
 import cors from "cors";
-import connectDB from "./dbinit";
+import connectDB from "./db/dbinit";
 import songRoutes from "./routes/song";
-
+import user from "./routes/user.ts";
+import errorHandler from './middleware/errorHandler.ts';
 const app = express();
 
 connectDB();
@@ -20,6 +21,10 @@ app.use("/api/songs", songRoutes);
 app.get("/", (req, res) => {
   res.send("Hello Welcome Music lovers...");
 });
+
+app.use("/api/users", user);
+
+app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
