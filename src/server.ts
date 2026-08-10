@@ -3,6 +3,7 @@ import cors from "cors";
 import connectDB from "./db/dbinit.ts";
 import user from "./routes/user.ts";
 import errorHandler from './middleware/errorHandler.ts';
+import agent from './routes/agent.ts'
 
 
 const app =express();
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/users", user);
+app.use("/api/agent-stream", agent);
 
 app.use(errorHandler);
 
