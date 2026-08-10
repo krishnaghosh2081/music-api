@@ -4,7 +4,7 @@ import connectDB from "./db/dbinit.ts";
 import user from "./routes/user.ts";
 import authRoutes from "./routes/auth.ts";
 import errorHandler from './middleware/errorHandler.ts';
-
+import songRoutes from "./routes/songs.ts";
 const app = express();
 
 connectDB();
@@ -21,6 +21,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/users", user);
 app.use("/api/auth", authRoutes); // <-- Add this
+app.use("/api/songs", songRoutes); // <-- Add this
 
 app.use(errorHandler);
 
