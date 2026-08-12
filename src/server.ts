@@ -1,16 +1,17 @@
-import 'dotenv/config';
 import express from "express";
 import cors from "cors";
-import connectDB from "./db/dbinit";
-import songRoutes from "./routes/song";
+import connectDB from "./db/dbinit.ts";
+import songRoutes from "./routes/song.ts";
 import user from "./routes/user.ts";
 import errorHandler from './middleware/errorHandler.ts';
-import agent from './routes/agent.ts'
+import agent from './routes/agent.ts';
+import seedDB from "./seed-script/seeds.ts";
 
 
 const app =express();
 
 connectDB();
+//seedDB();
 
 const port = process.env.PORT || 5000;
 

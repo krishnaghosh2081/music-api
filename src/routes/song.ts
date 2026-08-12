@@ -1,16 +1,11 @@
 import { Router } from "express";
-import Song from "../models/Song";
+import {getSongs,uploadBasicSongs} from "../controllers/song.ts";
+
 
 const router = Router();
 
 // GET /api/songs
-router.get("/", async (req, res) => {
-  try {
-    const songs = await Song.find();
-    res.json(songs);
-  } catch (error) {
-    res.status(500).json({ message: "Server error", error });
-  }
-});
+router.get("/", getSongs);
+router.get("/upload-basics", uploadBasicSongs);
 
 export default router;
