@@ -1,8 +1,3 @@
-import dotenv from 'dotenv';
-dotenv.config(); // Loads your .env file
-
-import mongoose from 'mongoose';
-import Song from '../models/Song';
 
 const songsData = [
   {
@@ -52,26 +47,6 @@ const songsData = [
   }
 ];
 
-async function seedDB() {
-  try {
-    const mongoURI = process.env.MONGO_URI;
-    if (!mongoURI) {
-      throw new Error("MONGO_URI is not defined in the .env file!");
-    }
 
-    console.log("Connecting to MongoDB Atlas...");
-    await mongoose.connect(mongoURI);
-    console.log("Connected successfully!");
 
-    await Song.deleteMany({});
-    await Song.insertMany(songsData);
-    console.log("Metal & Rock tutorial songs seeded successfully!");
-  } catch (err) {
-    console.error("Error seeding database:", err);
-  } finally {
-    await mongoose.connection.close();
-    console.log("Database connection closed.");
-  }
-}
-
-seedDB();
+export default songsData;
