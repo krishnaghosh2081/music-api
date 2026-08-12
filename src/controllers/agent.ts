@@ -1,6 +1,6 @@
 import { type RequestHandler } from 'express';
 import { Ollama } from "ollama";
-import { tools,getWeather } from "../aiTools/tools.ts";
+import { tools,getWeather, getSongsFromDB } from "../aiTools/tools.ts";
 
 const ollama = new Ollama({
   host: "https://ollama.com",
@@ -28,7 +28,7 @@ export const getMessage: RequestHandler = async (req, res) => {
     console.log("prompt!",prompt)
   const messages = [{
       "role": "system",
-      "content": "You are a helpful assistant with access to tools. Always use them when required. Please answer only if the question is about music or guitar. For other question please say you are not allowed."
+      "content": "You are a helpful assistant with access to tools. Always use them when required. Please answer only if the question is about music or guitar. For other question please say you are not allowed.If user ask for some song search check the database first. If no songs found then search internet and provide only 2 results."
     },{ role: 'user', content: prompt }];
 
 
@@ -53,6 +53,10 @@ if (response.message.tool_calls && response.message.tool_calls.length > 0) {
     if (toolCall.function.name === 'getWeather') {
       toolResult = getWeather(toolCall.function.arguments.location);
     }
+    if (toolCall.function.name === 'getSongsFromDB') {
+      toolResult = await getSongsFromDB();
+    }
+
 
     // 6. Provide function output back to the model
     messages.push({
