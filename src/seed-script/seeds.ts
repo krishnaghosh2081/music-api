@@ -72,6 +72,66 @@ const songsData = [
       'https://www.youtube.com/watch?v=B4cQyu63Ktw&pp=ygUmQmxhY2sgU2FiYmF0aCAtIFBhcmFub2lkIGd1aXRhciBsZXNzb24%3D',
   },
   {
+    title: "Nothing Else Matters",
+    artist: "Metallica",
+    difficulty: "Intermediate",
+    genre: "Heavy Metal",
+    tabContent: "Intro/Riff: Open E minor arpeggio patterns",
+    backingTrackUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    videoUrls: [
+      "https://www.youtube.com/watch?v=tO0wOMJAftY",
+      "https://www.youtube.com/watch?v=cdOW0gVzqEE"
+    ]
+  },
+  {
+    title: "Zombie",
+    artist: "The Cranberries",
+    difficulty: "Beginner",
+    genre: "Alternative Rock",
+    tabContent: "Riff: Em - C - G - D progression",
+    backingTrackUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+    videoUrls: [
+      "https://www.youtube.com/watch?v=6Ejga4kJUts",
+      "https://www.youtube.com/watch?v=4ZqV_B9i-qg"
+    ]
+  },
+  {
+    title: "Smoke on the Water",
+    artist: "Deep Purple",
+    difficulty: "Beginner",
+    genre: "Hard Rock",
+    tabContent: "Riff: G-minor pentatonic double-stop power chords",
+    backingTrackUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+    videoUrls: [
+      "https://www.youtube.com/watch?v=zUwEIt9ez7M",
+      "https://www.youtube.com/watch?v=ikCs_Vh_AiQ"
+    ]
+  },
+  {
+    title: "When the Smoke Is Going Down",
+    artist: "Scorpions",
+    difficulty: "Intermediate",
+    genre: "Rock Ballad",
+    tabContent: "Intro: Clean fingerpicking arpeggios",
+    backingTrackUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+    videoUrls: [
+      "https://www.youtube.com/watch?v=525jX3t7w2U",
+      "https://www.youtube.com/watch?v=2r1Tj9xH1sA"
+    ]
+  },
+  {
+    title: "We Will Rock You",
+    artist: "Queen",
+    difficulty: "Beginner",
+    genre: "Arena Rock",
+    tabContent: "Riff: Stomp-stomp-clap rhythm pattern",
+    backingTrackUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+    videoUrls: [
+      "https://www.youtube.com/watch?v=-tJYN-eG1zk",
+      "https://www.youtube.com/watch?v=xmljMMbctHg"
+    ]
+  },
+  {
     title: 'For Whom the Bell Tolls',
     artist: 'Metallica',
     difficulty: 'Intermediate',
