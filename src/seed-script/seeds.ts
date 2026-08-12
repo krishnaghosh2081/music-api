@@ -72,17 +72,15 @@ const songsData = [
       'https://www.youtube.com/watch?v=B4cQyu63Ktw&pp=ygUmQmxhY2sgU2FiYmF0aCAtIFBhcmFub2lkIGd1aXRhciBsZXNzb24%3D',
   },
   {
-    title: "Nothing Else Matters",
-    artist: "Metallica",
-    difficulty: "Intermediate",
-    genre: "Heavy Metal",
-    tabContent: "Intro/Riff: Open E minor arpeggio patterns",
-    backingTrackUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-    videoUrls: [
-      "https://www.youtube.com/watch?v=tO0wOMJAftY",
-      "https://www.youtube.com/watch?v=cdOW0gVzqEE"
-    ]
-  },
+  title: 'Nothing Else Matters',
+  artist: 'Metallica',
+  difficulty: 'Intermediate',
+  genre: 'Heavy Metal',
+  tabContent: 'Intro/Riff: Open E minor arpeggio patterns',
+  backingTrackUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+  videoUrl: 'https://www.youtube.com/watch?v=t0owOMJAftY',
+  vidLesson1: 'https://www.youtube.com/watch?v=cdOW0gVzqEE',
+},
   {
     title: "Zombie",
     artist: "The Cranberries",
@@ -152,3 +150,27 @@ const songsData = [
 ];
 
 export default songsData;
+
+import mongoose from 'mongoose';
+import Song from '../models/Song.ts'; // Adjust path to your Song model if needed
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const seedDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/music-api');
+    console.log('MongoDB connected for seeding...');
+
+    await Song.deleteMany({});
+    await Song.insertMany(songsData);
+    
+    console.log('Database successfully seeded with all 10 songs!');
+    process.exit(0);
+  } catch (error) {
+    console.error('Error seeding database:', error);
+    process.exit(1);
+  }
+};
+
+

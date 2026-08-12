@@ -5,7 +5,6 @@ import songRoutes from "./routes/song.ts";
 import user from "./routes/user.ts";
 import errorHandler from './middleware/errorHandler.ts';
 import agent from './routes/agent.ts';
-import seedDB from "./seed-script/seeds.ts";
 
 
 const app =express();
