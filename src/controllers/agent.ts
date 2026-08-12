@@ -10,12 +10,26 @@ const ollama = new Ollama({
 });
 
 
+function clearResult(res:string){
+  if(res.includes("\n")){
+    res=res.replaceAll("\n","");
+  }
+  if(res.includes("*")){
+    res=res.replaceAll("*","");
+  }
+  res=res.replaceAll("<br>","");
+  return res;
+}
+
 export const getMessage: RequestHandler = async (req, res) => {
   try {
     console.log("Request received!")
     const { prompt } = req.body;
     console.log("prompt!",prompt)
-  const messages = [{ role: 'user', content: prompt }];
+  const messages = [{
+      "role": "system",
+      "content": "You are a helpful assistant with access to tools. Always use them when required. Please answer only if the question is about music or guitar. For other question please say you are not allowed."
+    },{ role: 'user', content: prompt }];
 
 
 const response = await ollama.chat({
@@ -54,13 +68,13 @@ if (response.message.tool_calls && response.message.tool_calls.length > 0) {
 
     console.log('\nFinal Answer:');
     console.log(finalResponse.message.content);
-    return res.json(finalResponse.message.content);
+    return res.json(clearResult(finalResponse.message.content));
   } else {
     console.log('\nAnswer:', response.message.content);
   }
 
 
-    res.json(response.message.content);
+    res.json(clearResult(response.message.content));
   } catch (error: unknown) {
     if (error instanceof Error) {
       res.status(500).json({ message: error.message });
@@ -69,3 +83,5 @@ if (response.message.tool_calls && response.message.tool_calls.length > 0) {
     }
   }
 };
+
+
