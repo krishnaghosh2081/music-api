@@ -5,7 +5,10 @@ import connectDB from "./db/dbinit";
 import songRoutes from "./routes/song";
 import user from "./routes/user.ts";
 import errorHandler from './middleware/errorHandler.ts';
-const app = express();
+import agent from './routes/agent.ts'
+
+
+const app =express();
 
 connectDB();
 
@@ -15,14 +18,15 @@ const port = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cors());
 
-// Routes
-app.use("/api/songs", songRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello Welcome Music lovers...");
 });
 
+//Routes
 app.use("/api/users", user);
+app.use("/api/agent-stream", agent);
+app.use("/api/songs", songRoutes);
 
 app.use(errorHandler);
 

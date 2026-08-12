@@ -33,7 +33,18 @@ export const createUser: RequestHandler = async (req, res) => {
 
 
     const user = await User.create({ name, email, password: hashedPassword, usercategory, level, instrument,favband });
-    res.json(user);
+    return  res.status(200).json({
+      message: "Logged in",
+      user: {
+        id: user._id,
+        email: user.email,
+        name: user.name,
+        usercategory: user.usercategory,
+        level: user.level,
+        instrument: user.instrument,
+        favband: user.favband,
+      },
+    });
   } catch (error: unknown) {
     if (error instanceof Error) {
       res.status(500).json({ message: error.message });
