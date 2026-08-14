@@ -44,3 +44,26 @@ export const getSongById: RequestHandler = async (req, res) => {
     res.status(500).json({ message: 'Server error', error });
   }
 };
+// Logic for search bar:
+export const searchSongs: RequestHandler = async (req, res) => {
+  try {
+    const q = String(req.query.q ?? '').trim();
+
+    if (q.length < 2) {
+      res.json([]);
+      return;
+    }
+
+    // escape regex characters so a title like "Ain't (Live)" can't break the query
+    const safe = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const pattern = new RegExp(safe, 'i');
+
+    const songs = await Song.find({
+      $or: [{ title: pattern }, { artist: pattern }],
+    }).limit(8);
+
+    res.json(songs);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error });
+  }
+};
