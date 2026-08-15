@@ -7,14 +7,14 @@ const kafka = new Kafka({
 });
 // Create producer
 const producer = kafka.producer();
-const sendMessage = async () => {
+const sendMessage = async (msg:string) => {
   try {
     await producer.connect();
     console.log("Producer connected");
     await producer.send({
       topic: 'my-topic',
       messages: [
-        { value: 'Hello Kafka from Node.js!' },
+        { value: msg },
       ],
     });
     console.log("Message sent successfully");
