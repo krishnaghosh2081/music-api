@@ -7,6 +7,7 @@ import errorHandler from './middleware/errorHandler.ts';
 import agent from './routes/agent.ts';
 import stem from "./routes/stem.ts";
 import audiofile from "./routes/audiofiles.ts"
+import recordings from "./routes/recording.ts"
 
 
 const app =express();
@@ -31,6 +32,7 @@ app.use("/api/agent-stream", agent);
 app.use("/api/songs", songRoutes);
 app.use("/api/stems", stem);
 app.use("/api/audiofiles", audiofile);
+app.use("/api/recordings", recordings);
 
 app.use(errorHandler);
 
