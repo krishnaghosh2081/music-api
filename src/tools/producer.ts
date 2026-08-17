@@ -1,9 +1,10 @@
 import { Kafka } from 'kafkajs';
 
+const broker = process.env.KAFKA_BROKER || '' ;
 // Create Kafka instance
 const kafka = new Kafka({
   clientId: 'stem-analyze',
-  brokers: ['localhost:9092'],
+  brokers: [broker],
 });
 // Create producer
 const producer = kafka.producer();
