@@ -14,23 +14,28 @@ export interface ISong extends Document {
   vidLesson4: string;
 }
 
-const songSchema: Schema = new Schema({
-  title: { type: String, required: true },
-  artist: { type: String, required: true },
-  difficulty: {
-    type: String,
-    enum: ['Beginner', 'Intermediate', 'Advanced'],
-    required: true,
+const songSchema: Schema = new Schema(
+  {
+    title: { type: String, required: true },
+    artist: { type: String, required: true },
+    difficulty: {
+      type: String,
+      enum: ['Beginner', 'Intermediate', 'Advanced'],
+      required: true,
+    },
+    genre: { type: String },
+    tabContent: { type: String },
+    backingTrackUrl: { type: String },
+    videoUrl: { type: String },
+    vidLesson1: { type: String },
+    vidLesson2: { type: String },
+    vidLesson3: { type: String },
+    vidLesson4: { type: String },
+    createdAt: { type: Date, default: Date.now },
   },
-  genre: { type: String },
-  tabContent: { type: String },
-  backingTrackUrl: { type: String },
-  videoUrl: { type: String },
-  vidLesson1: { type: String },
-  vidLesson2: { type: String },
-  vidLesson3: { type: String },
-  vidLesson4: { type: String },
-  createdAt: { type: Date, default: Date.now },
-});
+  {
+    toJSON: { virtuals: true },
+  },
+);
 
 export default mongoose.model<ISong>('Song', songSchema);
