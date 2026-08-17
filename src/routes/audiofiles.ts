@@ -5,7 +5,5 @@ import {getAllAudioFiles,getProcessedAudioFiles,createAudio,getAudioFileById,del
 const router = Router();
 
 
-router.get("/", getAllAudioFiles).post("/",createAudio).get("/:id",getAudioFileById).delete("/:id",deleteAudiofile);
-router.get("/getAllProcessed", getProcessedAudioFiles);
-
+router.get("/", getAllAudioFiles).get("/getAllProcessed", getProcessedAudioFiles).post("/",createAudio).get("/:id",getAudioFileById).delete("/:id",deleteAudiofile);
 export default router;
