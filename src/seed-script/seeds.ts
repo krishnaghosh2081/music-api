@@ -150,8 +150,8 @@ const songsData = [
     vidLesson4: 'https://www.youtube.com/watch?v=bmfAIqJUtwY',
   },
   {
-    title: 'The Beatles',
-    artist: 'Love Me Do',
+    title: 'Love Me Do',
+    artist: 'The Beatles',
     difficulty: 'Beginner',
     genre: 'Rock',
     tabContent: 'Verse and chorus: |G  |C | Bridge: |D  |D |C  |G  |',

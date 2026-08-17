@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node --watch --conditions development --env-file=.env src/server.ts",
     "build": "npx tsc",
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed": "node --conditions development --env-file=.env src/seed-script/seeds.ts"
   },
   "keywords": [],
   "author": "",
