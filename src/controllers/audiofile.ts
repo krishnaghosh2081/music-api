@@ -4,6 +4,7 @@ import Audiofile, { type AudioInput }  from '../models/Audiofile.ts';
 
 export const getAllAudioFiles: RequestHandler = async (req, res) => {
   try {
+    console.log("Request received");
     const audiofiles = (await Audiofile.find());
     res.json(audiofiles);
   } catch (error: unknown) {
@@ -17,9 +18,11 @@ export const getAllAudioFiles: RequestHandler = async (req, res) => {
 
 export const getProcessedAudioFiles: RequestHandler = async (req, res) => {
   try {
-    const audiofiles = (await Audiofile.find());
-    res.json(audiofiles.map((file)=>file.status==="processed"));
+    console.log("Request received");
+    const audiofiles = await Audiofile.find({"status":"processed"});
+    res.json(audiofiles);
   } catch (error: unknown) {
+    console.log(error);
     if (error instanceof Error) {
       res.status(500).json({ message: error.message });
     } else {
