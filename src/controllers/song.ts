@@ -27,10 +27,10 @@ export const getSongById: RequestHandler = async (req, res) => {
   try {
     const { id } = req.params;
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      res.status(400).json({ message: 'Invalid song id' });
-      return;
-    }
+    // if (!mongoose.Types.ObjectId.isValid(id)) {
+    //   res.status(400).json({ message: 'Invalid song id' });
+    //   return;
+    // }
 
     const song = await Song.findById(id);
 
